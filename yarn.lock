@@ -7424,6 +7424,9 @@ react-native-webview@^10.3.3, react-native-webview@^10.9.3:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
+react-native-xrbase@../react-native-xrbase:
+  version "0.1.0"
+
 react-native@0.63.9:
   version "0.63.9"
   resolved "http://nexus.medlinker.com/repository/group-npm/react-native/-/react-native-0.63.9.tgz#6702f975e8f32ca83cc0886baa95ac677bb797a2"

@@ -41,7 +41,8 @@
     "react-native-toast-notifications": "^3.2.3",
     "react-native-video": "^2.0.0",
     "react-native-view-shot": "^3.1.2",
-    "react-native-webview": "^10.3.3"
+    "react-native-webview": "^10.3.3",
+    "react-native-xrbase": "../react-native-xrbase"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

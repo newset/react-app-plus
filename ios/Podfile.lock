@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.63.9)
@@ -207,6 +222,9 @@ PODS:
     - React
   - react-native-webview (10.10.2):
     - React-Core
+  - react-native-xrbase (0.1.0):
+    - React-Core
+    - XRApi (~> 1.0.2)
   - React-RCTActionSheet (0.63.9):
     - React-Core/RCTActionSheetHeaders (= 0.63.9)
   - React-RCTAnimation (0.63.9):
@@ -290,6 +308,11 @@ PODS:
   - Sentry (7.10.0):
     - Sentry/Core (= 7.10.0)
   - Sentry/Core (7.10.0)
+  - XRApi (1.0.2):
+    - AFNetworking
+    - XRApi/Zip (= 1.0.2)
+  - XRApi/Zip (1.0.2):
+    - AFNetworking
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -321,6 +344,7 @@ DEPENDENCIES:
   - react-native-video (from `../node_modules/react-native-video`)
   - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - react-native-webview (from `../node_modules/react-native-webview`)
+  - react-native-xrbase (from `../node_modules/react-native-xrbase`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -339,10 +363,14 @@ DEPENDENCIES:
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSound (from `../node_modules/react-native-sound`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - XRApi (~> 1.0.2)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
+  "git@gitlab.aihaisi.com:teams/frontend/XRPodSpecs.git":
+    - XRApi
   trunk:
+    - AFNetworking
     - boost-for-react-native
     - Sentry
 
@@ -399,6 +427,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-view-shot"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
+  react-native-xrbase:
+    :path: "../node_modules/react-native-xrbase"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -439,6 +469,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5b228d0bed3caa65961d570dd5f93260abb5f86f
   FBLazyVector: 0d6f187ce1f79d9fc2b2dbaab094b5191b18bcdc
@@ -466,6 +497,7 @@ SPEC CHECKSUMS:
   react-native-video: a6cae6575a8e86cdb5a3d6acf85ea9ea40a15e50
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
   react-native-webview: 0aa2cde4ee7e3e1c5fffdf64dbce9c709aa18155
+  react-native-xrbase: 5f2301b41a23e6eb64edf07fce14f18b226da62d
   React-RCTActionSheet: f13a5146d950320cb8c64e9f4edb8caed51d91db
   React-RCTAnimation: 2fe131b905c1fd0041a4d59ff704ed42d1e3bb41
   React-RCTBlob: 85e094530ba6f71c0038bdd45bf4ad8b51a37ba1
@@ -485,8 +517,9 @@ SPEC CHECKSUMS:
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
   Sentry: 6ff0eac197e699126c024993eba40a7462e92941
+  XRApi: e68d59eb9f602a317704e02665c4b54850675ed2
   Yoga: 3857ed76ccc3696336390ea8e4aa2e04ac565eab
 
-PODFILE CHECKSUM: 10be010de69cbed1bc5c2b1f7d577da9fe362fac
+PODFILE CHECKSUM: 7de3b39dbfe3812750f1e2e07fb555e47f724617
 
 COCOAPODS: 1.11.2
