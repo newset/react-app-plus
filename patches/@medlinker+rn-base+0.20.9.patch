@@ -1,0 +1,13 @@
+diff --git a/node_modules/@medlinker/rn-base/ios/Base/MedBaseVC/MedNavigationController.swift b/node_modules/@medlinker/rn-base/ios/Base/MedBaseVC/MedNavigationController.swift
+index f6c060e..0612ee2 100644
+--- a/node_modules/@medlinker/rn-base/ios/Base/MedBaseVC/MedNavigationController.swift
++++ b/node_modules/@medlinker/rn-base/ios/Base/MedBaseVC/MedNavigationController.swift
+@@ -22,7 +22,7 @@ class MedNavigationController: UINavigationController {
+     }
+     
+     
+-    override var childViewControllerForStatusBarStyle: UIViewController? {
++    override var childForStatusBarStyle: UIViewController? {
+         return self.topViewController
+     }
+     
