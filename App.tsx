@@ -1,81 +1,84 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  NativeModules,
-} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NativeBaseProvider } from "native-base";
+import HomeScreen from "./src/pages";
+import SettingsScreen from "./src/pages/Setting";
+import About from "./src/pages/About";
+import Example from "./src/pages/Example";
+import { Image } from "native-base";
+import { Icon, Colors } from "react-native-ui-lib";
 
-import { Colors, Header } from "react-native/Libraries/NewAppScreen";
-const { RNPlus } = NativeModules;
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-console.log("modules: ", NativeModules);
-
-const App = () => {
-  const isDarkMode = useColorScheme() === "dark";
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+const TabIcon =
+  (src: { uri: string }) =>
+  ({ focused }) => {
+    return (
+      <Icon
+        source={src}
+        size={20}
+        tintColor={focused ? Colors.blue30 : Colors.grey5}
+      ></Icon>
+    );
   };
 
+const Root = () => {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-        >
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => {
-              console.log("RNPlus", RNPlus);
-              RNPlus.navigate("intro", "test");
-            }}
-          >
-            <Text>open intro</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => {
-              console.log("RNPlus", RNPlus);
-              RNPlus.navigate("demo", "test");
-            }}
-          >
-            <Text>open demo</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Tab.Navigator
+      sceneContainerStyle={{
+        backgroundColor: "#fff",
+      }}
+      screenOptions={{}}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: TabIcon(require("./assets/images/home.png")),
+        }}
+      />
+      <Tab.Screen
+        name="About"
+        component={About}
+        options={{
+          tabBarIcon: TabIcon(require("./assets/images/info.png")),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: TabIcon(require("./assets/images/setting-one.png")),
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  btn: {
-    width: 100,
-    height: 30,
-    backgroundColor: "#ddd",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
-export default App;
+export default function Router() {
+  return (
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            contentStyle: {},
+            headerShadowVisible: false,
+            headerBackTitleVisible: false,
+          }}
+        >
+          <Stack.Screen
+            name="Root"
+            component={Root}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen name="Example" component={Example}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
+  );
+}

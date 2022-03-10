@@ -16,6 +16,7 @@ target 'AppPlus' do
   )
 
   pod 'XRApi', '~> 1.0.2', :modular_headers => true
+  pod 'XRComponent', '~> 1.0.4', :modular_headers => true
 
   target 'AppPlusTests' do
     inherit! :complete
@@ -35,6 +36,22 @@ target 'AppPlus' do
       if ['ReactiveSwift', 'ReactiveCocoa', 'KeychainAccess'].include? target.name
         target.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.2'
+        end
+      end
+
+      if ['React-Core'].include?(target.name)
+        target.build_configurations.each do |build_configuration|
+          if build_configuration.name == 'Debug'
+            Pod::UI.message("Adding RCT_METRO_PORT GCC_PREPROCESSOR_DEFINITIONS build setting for '#{target.name} - #{build_configuration.name}'")
+            defs = build_configuration.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
+            # set to an standard set of debug defs in case it is nil
+            defs ||= %w($(inherited) COCOAPODS=1 DEBUG=1)
+            # single quoted string because we want to preserve the ${} escape
+            # syntax so that xcode can set the RCT_METRO_PORT value based on
+            # the RCT_METRO_PORT env var
+            defs << 'RCT_METRO_PORT=8088'
+            build_configuration.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = defs
+          end
         end
       end
     end  

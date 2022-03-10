@@ -48,7 +48,10 @@ static void InitializeFlipper(UIApplication *application) {
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
+  
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+  nav.navigationBarHidden = true;
+  nav.interactivePopGestureRecognizer.enabled = YES;
   self.window.rootViewController = nav;
   
   [RNPlus initWith:nav and:launchOptions];
